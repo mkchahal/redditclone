@@ -9,13 +9,13 @@ const style = {
     postContent: 'text-sm font-light text-[#D7DADC]/80',
 }
 
-const Post = () => {
+const Post = ({ id, title, author}) => {
     return (
         <div className={style.wrapper}>
             <Vote />
             <div className={style.post}>
-                <Info />
-                <h1 className={style.postTitle}>Why puppies are so cute? 💌</h1>
+                <Info author={author}/>
+                <h1 className={style.postTitle}>{title}</h1>
                 <p className={style.postContent}>
                     I always go awww whenever I see some puppies no matter what breed they
                     are. Why so? Why do we love them and feel fuzzy? There could be some
