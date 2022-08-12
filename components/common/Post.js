@@ -1,4 +1,5 @@
 import Vote from '../feed/Vote';
+import Actions from '../feed/Actions';
 
 const style = {
     post: 'flex flex-col space-y-1 cursor-pointer',
@@ -18,6 +19,7 @@ const Post = () => {
             are. Why so? Why do we love them and feel fuzzy? There could be some
             science behind it. 🤔
           </p>
+          <Actions/>
         </div>
     </div>
   );
