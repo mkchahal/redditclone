@@ -9,17 +9,15 @@ const style = {
     postContent: 'text-sm font-light text-[#D7DADC]/80',
 }
 
-const Post = ({ id, title, author}) => {
+const Post = ({ id, title, content, author, upvotes, downvotes}) => {
     return (
         <div className={style.wrapper}>
-            <Vote />
+            <Vote upvotes={upvotes} downvotes={downvotes}/>
             <div className={style.post}>
                 <Info author={author}/>
                 <h1 className={style.postTitle}>{title}</h1>
                 <p className={style.postContent}>
-                    I always go awww whenever I see some puppies no matter what breed they
-                    are. Why so? Why do we love them and feel fuzzy? There could be some
-                    science behind it. 🤔
+                    {content} 🤔
                 </p>
                 <Actions />
             </div>
