@@ -5,6 +5,7 @@ export const RedditContext = createContext();
 
 export const RedditProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -18,7 +19,7 @@ export const RedditProvider = ({ children }) => {
   }, []);
 
   return (
-    <RedditContext.Provider value={{ currentUser, fetcher }}>
+    <RedditContext.Provider value={{ currentUser, fetcher, selectedPost, setSelectedPost }}>
       {children}
     </RedditContext.Provider>
   );

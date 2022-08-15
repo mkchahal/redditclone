@@ -1,6 +1,9 @@
 import Vote from "../feed/Vote";
 import Actions from "../feed/Actions";
 import Info from "../feed/Info";
+import { useContext } from "react";
+import { RedditContext } from "../../context/RedditContext";
+import { useRouter } from "next/router";
 
 const style = {
   post: "flex flex-col space-y-1 cursor-pointer",
@@ -9,11 +12,28 @@ const style = {
   postContent: "text-sm font-light text-[#D7DADC]/80",
 };
 
-const Post = ({ id, title, content, author, upvotes, downvotes }) => {
+const Post = ({ id, title, content, author, upvotes, downvotes, created_at }) => {
+  const router = useRouter();
+  const { setSelectedPost } = useContext(RedditContext);
+
+  const navigateToPost = () => {
+    setSelectedPost({
+      id,
+      title,
+      content,
+      author,
+      upvotes,
+      downvotes,
+      created_at
+    });
+
+    router.push(`/post/${id}`);
+  };
+
   return (
     <div className={style.wrapper}>
       <Vote upvotes={upvotes} downvotes={downvotes} />
-      <div className={style.post}>
+      <div className={style.post} onClick={navigateToPost}>
         <Info author={author} />
         <h1 className={style.postTitle}>{title}</h1>
         <p className={style.postContent}>{content}</p>
