@@ -35,8 +35,8 @@ const PostForm = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
-      router.push("/");
+        router.push("/");
+        setIsLoading(false);
     }
   };
 

@@ -1,4 +1,4 @@
-import { LoadingAnimation } from "../assets/LoadingAnimation";
+import { LoadingAnimation } from "../assets/icons/LoadingAnimation";
 
 const style = {
   wrapper:

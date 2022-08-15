@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { LinkIcon, PhotographIcon } from '@heroicons/react/outline'
-import { CreatePostIcon } from '../../assets/CreatePostIcon'
+import { CreatePostIcon } from '../../assets/icons/CreatePostIcon'
 
 const style = {
   wrapper: `flex items-center space-x-3 rounded border border-[#343536] bg-[#1a1a1b] px-3 py-2 `,
