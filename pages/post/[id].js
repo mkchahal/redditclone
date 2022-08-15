@@ -4,6 +4,7 @@ import { RedditContext } from "../../context/RedditContext";
 import Header from "../../components/Header";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Comments from "../../components/commentSection/Comments";
 
 const style = {
   wrapper: "flex min-h-screen flex-col bg-black text-white",
@@ -29,6 +30,7 @@ const PostView = () => {
           <Post {...selectedPost} />
           {/* SaveComment - add new comment */}
           {/* Comments - current comments */}
+          <Comments postId={selectedPost.id}/>
         </div>
       </div>
     </div>

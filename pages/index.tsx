@@ -46,7 +46,6 @@ const Home: NextPage = () => {
 
   useEffect(() => { 
     saveAndUpdateUser();
-    console.log("Save User")
   }, [currentUser]);
 
   return (
