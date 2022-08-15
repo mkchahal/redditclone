@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { supabase } from '../../services/supabaseClient';
+import { supabase } from "../../services/supabaseClient";
+import Loading from "../Loading";
 
 const style = {
   wrapper: "flex flex-col space-y-6",
@@ -26,7 +27,7 @@ const PostForm = () => {
 
       await supabase.from("feed").insert([
         {
-          author: 'Mandeep K Chahal',
+          author: "Mandeep K Chahal",
           title,
           content,
         },
@@ -41,6 +42,7 @@ const PostForm = () => {
 
   return (
     <div className={style.wrapper}>
+      {isLoading && <Loading />}
       <h1 className={style.title}>Create a Post</h1>
       <div className="flex flex-col space-y-2 rounded bg-[#1a1a1b] p-4">
         <input
@@ -61,7 +63,9 @@ const PostForm = () => {
           onChange={(e) => setContent(e.currentTarget.value)}
         ></textarea>
         <div className={style.postButtonContainer}>
-          <button onClick={createPost} className={style.postButton}>Post</button>
+          <button onClick={createPost} className={style.postButton}>
+            Post
+          </button>
         </div>
       </div>
     </div>
