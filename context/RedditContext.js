@@ -19,7 +19,7 @@ export const RedditProvider = ({ children }) => {
   }, []);
 
   return (
-    <RedditContext.Provider value={{ currentUser, fetcher, selectedPost, setSelectedPost }}>
+    <RedditContext.Provider value={{ currentUser, setCurrentUser, fetcher, selectedPost, setSelectedPost }}>
       {children}
     </RedditContext.Provider>
   );

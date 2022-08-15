@@ -7,20 +7,24 @@ import {
   BellIcon,
   PlusIcon,
   SpeakerphoneIcon,
-  CurrencyDollarIcon,
 } from '@heroicons/react/outline'
+import { useContext } from 'react'
+import { RedditContext } from '../../context/RedditContext'
 
 const style = {
   wrapper: 'flex items-center space-x-2 divide-x divide-[#343536]',
   iconsLeft: 'flex items-center space-x-2',
   iconsRight: 'flex items-center space-x-2 pl-2',
-  freeBtn:
-    'bg-coin shadow-coin flex items-center space-x-1 rounded-full py-1 pl-2 pr-4 text-gray-800',
-  smallText: 'text-sm',
+  logoutBtn:
+    'bg-[#818283] flex align-center items-center rounded-full px-4 py-1',
+  smallText: 'text-sm text-semibold text-white',
   dollarIcon: 'h-4 w-4',
 }
 
 const Icons = () => {
+
+  const {setCurrentUser } = useContext(RedditContext);
+
   return (
     <div className={style.wrapper}>
       <div className={style.iconsLeft}>
@@ -34,9 +38,8 @@ const Icons = () => {
         <IconItem Icon={PlusIcon} />
         <IconItem Icon={SpeakerphoneIcon} />
 
-        <button className={style.freeBtn}>
-          <CurrencyDollarIcon className={style.dollarIcon} />
-          <span className={style.smallText}>Free</span>
+        <button className={style.logoutBtn} onClick={() => setCurrentUser(null)}>
+          <span className={style.smallText}>Logout</span>
         </button>
       </div>
     </div>
