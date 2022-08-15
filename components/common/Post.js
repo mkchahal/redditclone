@@ -32,12 +32,12 @@ const Post = ({ id, title, content, author, upvotes, downvotes, created_at }) =>
 
   return (
     <div className={style.wrapper}>
-      <Vote upvotes={upvotes} downvotes={downvotes} />
+      <Vote id={id} upvotes={upvotes} downvotes={downvotes} />
       <div className={style.post} onClick={navigateToPost}>
         <Info author={author} />
         <h1 className={style.postTitle}>{title}</h1>
         <p className={style.postContent}>{content}</p>
-        <Actions />
+        <Actions postId={id} />
       </div>
     </div>
   );

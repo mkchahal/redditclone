@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RedditContext } from "../../context/RedditContext";
 import { supabase } from "../../services/supabaseClient";
 import Loading from "../Loading";
 
@@ -17,6 +18,7 @@ const PostForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { currentUser } = useContext(RedditContext);
   const router = useRouter();
 
   const createPost = async (event) => {
@@ -27,16 +29,16 @@ const PostForm = () => {
 
       await supabase.from("feed").insert([
         {
-          author: "Mandeep K Chahal",
+          author: currentUser.user_metadata.full_name,
           title,
           content,
         },
       ]);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
-        router.push("/");
-        setIsLoading(false);
+      router.push("/");
+      setIsLoading(false);
     }
   };
 

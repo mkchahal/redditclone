@@ -4,7 +4,7 @@ const getData = async(req, res) => {
     const { data } = await supabase
         .from('feed')
         .select('*')
-        .order('id', { ascending:false })
+        .order('created_at', { ascending:false })
     
     res.status(200).json({ data:data })
 }

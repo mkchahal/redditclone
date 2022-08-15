@@ -11,6 +11,6 @@ const getComments = async (req, res) => {
   } catch (error) {
     res.status(500).send({ error: "Error fetching comments" });
   }
-};
+}
 
 export default getComments;

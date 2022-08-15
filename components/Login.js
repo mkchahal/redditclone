@@ -19,7 +19,7 @@ const Login = () => {
         provider: "google",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

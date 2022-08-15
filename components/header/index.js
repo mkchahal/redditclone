@@ -1,4 +1,7 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { RedditContext } from '../../context/RedditContext'
 import Icons from './Icons'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
@@ -14,11 +17,15 @@ const style = {
 }
 
 const Header = () => {
+
+  const { currentUser } = useContext(RedditContext);
+  const router = useRouter();
+
   return (
         <header className={style.header}>
           <div className={style.wrapper}>
             <div className={style.leftHeader}>
-              <Logo />
+              <Logo onClick={() => router.push('/')}/>
               <SearchBar />
             </div>
             <div className={style.rightHeader}>
@@ -28,7 +35,7 @@ const Header = () => {
                 <div className={style.profileImageContainer}>
                     <Image
                       className={style.profileImage}
-                      src='https://images.unsplash.com/photo-1596797882870-8c33deeac224'
+                      src={currentUser.user_metadata.picture}
                       layout='fill'
                       alt='Profile Image'
                     />

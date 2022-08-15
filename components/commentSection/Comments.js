@@ -38,46 +38,50 @@ const Comments = ({ postId }) => {
   }, [data]);
 
   return (
-    <div className={style.wrapper}>
-      {comments.length > 0 &&
-        comments.map((comment, id) => (
-          <div key={id} className={style.commentContainer}>
-            <div className={style.postInfoContainer}>
-              <div className={style.profileImageContainer}>
-                <Image
-                  src={comment.users.profileImage}
-                  alt="user"
-                  className={style.profileImage}
-                  layout="fill"
-                />
+    <>
+      <div className={style.wrapper}>
+        {comments.length > 0 &&
+          comments.map((comment, id) => (
+            <div key={id} className={style.commentContainer}>
+              <div className={style.postInfoContainer}>
+                <div className={style.profileImageContainer}>
+                  <Image
+                    src={comment.users.profileImage}
+                    alt="user"
+                    className={style.profileImage}
+                    layout="fill"
+                  />
+                </div>
+                <span>{comment.author}</span>
+                <span>•</span>
+                <span>
+                  {timeAgo.format(new Date(comment.created_at), "twitter-now")}
+                </span>
               </div>
-              <span>{comment.author}</span>
-              <span>•</span>
-              <span>{timeAgo.format(new Date(comment.created_at), "twitter-now")}</span>
-            </div>
 
-            <div>{comment.text}</div>
-            <div className={style.icons}>
-              <span className={style.icon}>
-                <UpvoteIcon />
-              </span>
-              <span>0</span>
-              <span className={style.icon}>
-                <DownvoteIcon />
-              </span>
-              <span>0</span>
-              <span className={style.reply}>
-                <ChatAltIcon className="h-6 w-6" />
-                <span>Reply</span>
-              </span>
-              <span className={style.icon}>Give</span>
-              <span className={style.icon}>Share</span>
-              <span className={style.icon}>Save</span>
-              <span className={style.icon}>Follow</span>
+              <div>{comment.text}</div>
+              <div className={style.icons}>
+                <span className={style.icon}>
+                  <UpvoteIcon />
+                </span>
+                <span>0</span>
+                <span className={style.icon}>
+                  <DownvoteIcon />
+                </span>
+                <span>0</span>
+                <span className={style.reply}>
+                  <ChatAltIcon className="h-6 w-6" />
+                  <span>Reply</span>
+                </span>
+                <span className={style.icon}>Give</span>
+                <span className={style.icon}>Share</span>
+                <span className={style.icon}>Save</span>
+                <span className={style.icon}>Follow</span>
+              </div>
             </div>
-          </div>
-        ))}
-    </div>
+          ))}
+      </div>
+    </>
   );
 };
 
