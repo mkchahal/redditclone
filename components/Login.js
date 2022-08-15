@@ -7,21 +7,21 @@ import { useEffect, useState } from "react";
 
 const style = {
   wrapper: "flex min-h-screen flex-col items-center justify-center gap-y-14",
-  loginBtn: "group flex items-center space-x-4 rounded border-gray-300 border p-4 hover:bg-white",
-  loginBtnText: "font-bold group-hover:text-black"
+  loginBtn:
+    "group flex items-center space-x-4 rounded border-gray-300 border p-4 hover:bg-white",
+  loginBtnText: "font-bold group-hover:text-black",
 };
 
 const Login = () => {
-
   const signInWithGoogle = async () => {
     try {
       await supabase.auth.signIn({
-        provider: 'google'
-      })
+        provider: "google",
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className={style.wrapper}>
