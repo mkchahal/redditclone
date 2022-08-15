@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
-import Header from '../components/header'
+import Header from '../components/Header'
 import Banner from '../components/community/Banner'
 import CreatePost from '../components/feed/CreatePost'
 import About from '../components/community/About'
-import Feed from '../components/feed';
+import Feed from '../components/Feed';
 import useSWR from 'swr'
 import { useState, useEffect } from 'react'
 

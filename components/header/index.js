@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import Icons from './Icons'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
