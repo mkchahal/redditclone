@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Header from "../components/Header";
+import Header from "../components/header";
 import Banner from "../components/community/Banner";
 import CreatePost from "../components/feed/CreatePost";
 import About from "../components/community/About";
