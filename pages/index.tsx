@@ -3,7 +3,7 @@ import Header from "../components/header";
 import Banner from "../components/community/Banner";
 import CreatePost from "../components/feed/CreatePost";
 import About from "../components/community/About";
-import Feed from "../components/Feed";
+import Feed from "../components/feed";
 import useSWR from "swr";
 import { useState, useEffect, useContext } from "react";
 import Login from "../components/Login";
