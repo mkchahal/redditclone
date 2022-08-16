@@ -31,7 +31,8 @@ const Header = () => {
             <div className={style.rightHeader}>
               <Icons />
 
-              <button>
+              { currentUser && 
+                <button>
                 <div className={style.profileImageContainer}>
                     <Image
                       className={style.profileImage}
@@ -41,6 +42,7 @@ const Header = () => {
                     />
                 </div>
               </button>
+              }
             </div>
           </div>
         </header>
