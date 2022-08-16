@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import banner from '../../assets/images/banner.jpeg'
 
 const style = {
   wrapper: 'mt-14 flex flex-col',
@@ -21,7 +22,7 @@ const Banner = () => {
     <div className={style.wrapper}>
       <div className={style.bannerImage}>
         <Image
-          src='https://images.unsplash.com/photo-1525253013412-55c1a69a5738'
+          src={banner}
           layout='fill'
           className='object-cover'
           alt=''
