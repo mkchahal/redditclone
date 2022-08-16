@@ -1,4 +1,4 @@
-import { IconItem } from '../common/IconItem'
+import { IconItem } from "../common/IconItem";
 import {
   SparklesIcon,
   GlobeIcon,
@@ -7,23 +7,29 @@ import {
   BellIcon,
   PlusIcon,
   SpeakerphoneIcon,
-} from '@heroicons/react/outline'
-import { useContext } from 'react'
-import { RedditContext } from '../../context/RedditContext'
+} from "@heroicons/react/outline";
+import { useContext } from "react";
+import { RedditContext } from "../../context/RedditContext";
+import { useRouter } from "next/router";
 
 const style = {
-  wrapper: 'flex items-center space-x-2 divide-x divide-[#343536]',
-  iconsLeft: 'flex items-center space-x-2',
-  iconsRight: 'flex items-center space-x-2 pl-2',
+  wrapper: "flex items-center space-x-2 divide-x divide-[#343536]",
+  iconsLeft: "flex items-center space-x-2",
+  iconsRight: "flex items-center space-x-2 pl-2",
   logoutBtn:
-    'bg-[#818283] flex align-center items-center rounded-full px-4 py-1',
-  smallText: 'text-sm text-semibold text-white',
-  dollarIcon: 'h-4 w-4',
-}
+    "bg-[#818283] flex align-center items-center rounded-full px-4 py-1",
+  smallText: "text-sm text-semibold text-white",
+  dollarIcon: "h-4 w-4",
+};
 
 const Icons = () => {
+  const { setCurrentUser } = useContext(RedditContext);
+  const router = useRouter();
 
-  const {setCurrentUser } = useContext(RedditContext);
+  const handleLogout = () => {
+    setCurrentUser(null);
+    router.push("/");
+  };
 
   return (
     <div className={style.wrapper}>
@@ -38,12 +44,12 @@ const Icons = () => {
         <IconItem Icon={PlusIcon} />
         <IconItem Icon={SpeakerphoneIcon} />
 
-        <button className={style.logoutBtn} onClick={() => setCurrentUser(null)}>
+        <button className={style.logoutBtn} onClick={handleLogout}>
           <span className={style.smallText}>Logout</span>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Icons
+export default Icons;

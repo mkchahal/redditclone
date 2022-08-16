@@ -14,7 +14,7 @@ export const RedditProvider = ({ children }) => {
     setCurrentUser(user);
 
     supabase.auth.onAuthStateChange((_event, authSession) => {
-      setCurrentUser(authSession.user);
+      authSession && setCurrentUser(authSession.user);
     });
   }, []);
 
