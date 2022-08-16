@@ -9,6 +9,7 @@ import { useState, useEffect, useContext } from "react";
 import Login from "../components/Login";
 import { RedditContext } from "../context/RedditContext";
 import { supabase } from "../services/supabaseClient";
+import Head from "next/head";
 
 const style = {
   wrapper: `flex min-h-screen flex-col bg-black text-white`,
@@ -25,18 +26,21 @@ const Home: NextPage = () => {
   const { data, error } = useSWR("/api/get-posts", fetcher, {
     refreshInterval: 200,
   });
-  
+
   //update or insert user
   const saveAndUpdateUser = async () => {
     if (!currentUser) return;
-    
-    await supabase.from("users").upsert({
-      email: currentUser.user_metadata.email,
-      name: currentUser.user_metadata.full_name,
-      profileImage: currentUser.user_metadata.avatar_url,
-    }, {
-      onConflict: "email"
-    });
+
+    await supabase.from("users").upsert(
+      {
+        email: currentUser.user_metadata.email,
+        name: currentUser.user_metadata.full_name,
+        profileImage: currentUser.user_metadata.avatar_url,
+      },
+      {
+        onConflict: "email",
+      }
+    );
   };
 
   useEffect(() => {
@@ -44,12 +48,15 @@ const Home: NextPage = () => {
     setMyPosts(data.data);
   }, [data]);
 
-  useEffect(() => { 
+  useEffect(() => {
     saveAndUpdateUser();
   }, [currentUser]);
 
   return (
     <>
+      <Head>
+        <title>Reddit Clone | MKC</title>
+      </Head>
       {currentUser ? (
         <div className={style.wrapper}>
           <Header />

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Comments from "../../components/commentSection/Comments";
 import SaveComment from "../../components/commentSection/SaveComment";
+import Head from "next/head";
 
 const style = {
   wrapper: "flex min-h-screen flex-col bg-black text-white",
@@ -25,6 +26,9 @@ const PostView = () => {
 
   return (
     <div className={style.wrapper}>
+      <Head>
+        <title>Reddit Post | MKC</title>
+      </Head>
       <Header />
       <div className={style.container}>
         { selectedPost &&
