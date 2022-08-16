@@ -27,11 +27,13 @@ const PostView = () => {
     <div className={style.wrapper}>
       <Header />
       <div className={style.container}>
-        <div className={style.containerWrapper}>
-          <Post {...selectedPost} />
-          <SaveComment postId={selectedPost.id}/>
-          <Comments postId={selectedPost.id}/>
-        </div>
+        { selectedPost &&
+          <div className={style.containerWrapper}>
+            <Post {...selectedPost} />
+            <SaveComment postId={selectedPost.id} />
+            <Comments postId={selectedPost.id} />
+          </div>
+        }
       </div>
     </div>
   );
